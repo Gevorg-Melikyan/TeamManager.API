@@ -1,4 +1,5 @@
 ﻿using Ardalis.GuardClauses;
+using TeamManager.Domain.Entities.ProjectAgregation;
 using TeamManager.Domain.Identity;
 
 namespace TeamManager.Domain.Entities.ProjectAggregation

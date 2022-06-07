@@ -11,7 +11,9 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using TeamManager.Domain.Entities;
+using TeamManager.Domain.Entities.CommentAgregation;
 using TeamManager.Domain.Entities.ProjectAggregation;
+using TeamManager.Domain.Entities.ProjectAgregation;
 using TeamManager.Domain.Identity;
 using TeamManager.Domain.Interfaces;
 
@@ -34,6 +36,8 @@ namespace TeamManager.Infra.Data.AppContexts
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<ProjectMember> ProjectMembers { get; set; }
         public virtual DbSet<Domain.Entities.TaskAgregation.Task> Tasks { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

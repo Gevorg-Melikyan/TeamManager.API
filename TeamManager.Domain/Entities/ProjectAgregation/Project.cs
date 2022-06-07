@@ -1,11 +1,11 @@
 ﻿using Ardalis.GuardClauses;
-using System;
 using System.Collections.Generic;
+using TeamManager.Domain.Entities.ProjectAggregation;
 using TeamManager.Domain.Entities.TaskAgregation;
 using TeamManager.Domain.Identity;
 using TeamManager.Domain.Interfaces;
 
-namespace TeamManager.Domain.Entities.ProjectAggregation
+namespace TeamManager.Domain.Entities.ProjectAgregation
 {
     public class Project : EntityBase, IAggregateRoot
     {
@@ -15,13 +15,13 @@ namespace TeamManager.Domain.Entities.ProjectAggregation
         public IReadOnlyCollection<ProjectMember> Members => _members.AsReadOnly();
         public IReadOnlyCollection<Task> Tasks => _tasks.AsReadOnly();
 
-        public Project(string name,string pmId)
+        public Project(string name, string pmId)
         {
             Guard.Against.NullOrWhiteSpace(name, nameof(name));
             Guard.Against.NullOrWhiteSpace(pmId, nameof(pmId));
 
             Name = name;
-            ProjectManagerId=pmId;
+            ProjectManagerId = pmId;
         }
 
         private Project()

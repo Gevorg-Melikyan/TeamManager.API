@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using TeamManager.Domain.Entities.ProjectAggregation;
+using TeamManager.Domain.Entities.ProjectAgregation;
 using TeamManager.Domain.Interfaces;
 
 namespace TeamManager.Application.Projects.Commands.Create
@@ -17,7 +17,7 @@ namespace TeamManager.Application.Projects.Commands.Create
 
         public async Task<bool> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
-            var project = new Project(request.Name,request.PmId );
+            var project = new Project(request.Name, request.PmId);
 
 
             await _repository.Create(project);

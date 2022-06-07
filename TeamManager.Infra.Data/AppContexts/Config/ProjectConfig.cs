@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TeamManager.Domain.Entities.ProjectAggregation;
+using TeamManager.Domain.Entities.ProjectAgregation;
 
 namespace TeamManager.Infra.Data.AppContexts.Config
 {

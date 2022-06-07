@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TeamManager.Domain.Entities;
 using TeamManager.Domain.Entities.ProjectAggregation;
+using TeamManager.Domain.Entities.ProjectAgregation;
 
 namespace TeamManager.Domain.Interfaces
 {

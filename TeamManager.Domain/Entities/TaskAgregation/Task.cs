@@ -1,5 +1,7 @@
 ﻿using Ardalis.GuardClauses;
-using TeamManager.Domain.Entities.ProjectAggregation;
+using System.Collections.Generic;
+using TeamManager.Domain.Entities.CommentAgregation;
+using TeamManager.Domain.Entities.ProjectAgregation;
 using TeamManager.Domain.Enums;
 using TeamManager.Domain.Events;
 using TeamManager.Domain.Identity;
@@ -17,6 +19,8 @@ namespace TeamManager.Domain.Entities.TaskAgregation
         public string ApplicationUserId { get; private set; }
         public ApplicationUser ApplicationUser { get; private set; }
         public TaskState TaskState { get; private set; }
+
+        public IReadOnlyCollection<Comment> Comments => _comments.AsReadOnly();
 
         public Task(
             string name,
@@ -67,6 +71,7 @@ namespace TeamManager.Domain.Entities.TaskAgregation
 
         #region Privete fields
 
+        private readonly List<Comment> _comments = new List<Comment>();
 
         #endregion Privete fields
     }
