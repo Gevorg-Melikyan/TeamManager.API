@@ -22,8 +22,6 @@ namespace TeamManager.Application.Tasks.Commands.Create
                                       request.ApplicationUserId,
                                       request.TaskState);
 
-           
-
             await _repository.Create(task);
             await _repository.CompleteAsync(cancellationToken);
             return true;
