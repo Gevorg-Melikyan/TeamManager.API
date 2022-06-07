@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\CategoryAggregation\**" />
+    <Compile Remove="Entities\OrderAggregation\**" />
+    <Compile Remove="Entities\ProductAggregation\**" />
+    <EmbeddedResource Remove="Entities\CategoryAggregation\**" />
+    <EmbeddedResource Remove="Entities\OrderAggregation\**" />
+    <EmbeddedResource Remove="Entities\ProductAggregation\**" />
+    <None Remove="Entities\CategoryAggregation\**" />
+    <None Remove="Entities\OrderAggregation\**" />
+    <None Remove="Entities\ProductAggregation\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\Language.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+    <PackageReference Include="MediatR" Version="8.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.17" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+  </ItemGroup>
+
+</Project>
