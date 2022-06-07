@@ -1,6 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using TeamManager.Domain.Entities.ProjectAggregation;
 using TeamManager.Domain.Enums;
+using TeamManager.Domain.Events;
 using TeamManager.Domain.Identity;
 using TeamManager.Domain.Interfaces;
 
@@ -16,7 +17,6 @@ namespace TeamManager.Domain.Entities.TaskAgregation
         public string ApplicationUserId { get; private set; }
         public ApplicationUser ApplicationUser { get; private set; }
         public TaskState TaskState { get; private set; }
-        public TaskState TaskState1 { get; }
 
         public Task(
             string name,
@@ -55,10 +55,14 @@ namespace TeamManager.Domain.Entities.TaskAgregation
             Description = description;
             ProjectId = projectId;
             ApplicationUserId = applicationUserId;
-            TaskState1 = taskState;
+            TaskState = taskState;
         }
 
-
+        public void Reslove(TaskState state)
+        {
+            TaskState = state;
+            AddDomainEvent(new TaskResolvedDomainEvent(this));
+        }
 
 
         #region Privete fields

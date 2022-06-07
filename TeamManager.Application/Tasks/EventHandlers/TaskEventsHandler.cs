@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TeamManager.Application.Roles;
 using TeamManager.Application.Tasks.Commands.Hubs;
 using TeamManager.Domain.Events;
+using TeamManager.Domain.Exeptions;
 using TeamManager.Domain.Identity;
 
 namespace TeamManager.Application.Tasks.Commands.EventHandlers
@@ -24,9 +25,11 @@ namespace TeamManager.Application.Tasks.Commands.EventHandlers
 
         public async Task Handle(TaskResolvedDomainEvent notification, CancellationToken cancellationToken)
         {
-            var users = await _userManager.GetUsersInRoleAsync(Role.User.ToString());
-            var userIds = users.Select(x => x.Id).ToList();
-            await _hubContext.Clients.Users(userIds).ProductDiscounted(new
+            var user = await _userManager.FindByIdAsync(notification.ResolvedTask.Project.ProjectManagerId);
+            if (user == null)
+                throw new SmartException("user not found");
+
+            await _hubContext.Clients.User(user.Id).ProductDiscounted(new
             {
                 TaskId = notification.ResolvedTask.Id,
                 TaskState = notification.ResolvedTask.TaskState,
